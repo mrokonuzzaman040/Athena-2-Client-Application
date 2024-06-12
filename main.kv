@@ -96,6 +96,7 @@
                     height: 50
                     background_color: 0.2, 0.2, 0.2, 1
                     color: 1, 1, 1, 1
+                    on_press: app.root.current = 'data_processing'
                 Button:
                     text: "Model Training"
                     size_hint_y: None
@@ -196,6 +197,7 @@
                     background_color: 1, 0.8, 0, 1
                     color: 1, 1, 1, 1
                     bold: True
+                    on_press: root.open_file_selector()
                 Button:
                     text: "Data Processing"
                     size_hint_y: None
@@ -214,15 +216,13 @@
                 padding: 20
                 spacing: 10
                 Label:
-                    text: "Drag and drop data here"
+                    text: "Drag and drop data here or click to select"
                     font_size: 20
                     color: 1, 1, 1, 1
                     bold: True
                     halign: 'center'
                     valign: 'middle'
-                DragAndDropBox:
-                    size_hint: (0.6, 0.4)
-                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                Widget:  # Placeholder for the drag and drop area
                 Label:
                     text: "Uploading Data"
                     font_size: 20
@@ -230,6 +230,116 @@
                     bold: True
                     halign: 'center'
                     valign: 'middle'
+
+            BoxLayout:
+                size_hint_y: None
+                height: 50
+                Label:
+                    text: "Make sure you have stable internet connection"
+                    font_size: 14
+                    color: 1, 1, 1, 1
+
+<DataProcessingScreen>:
+    BoxLayout:
+        orientation: 'horizontal'
+        Sidebar:
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 20
+            spacing: 10
+            canvas.before:
+                Color:
+                    rgba: 0.1, 0.1, 0.1, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            BoxLayout:
+                size_hint_y: None
+                height: 80
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                Label:
+                    text: "Athena-2 Client Application"
+                    font_size: 24
+                    color: 1, 1, 1, 1
+                    bold: True
+                Widget:
+                BoxLayout:
+                    size_hint_x: None
+                    width: 200
+                    orientation: 'vertical'
+                    Image:
+                        source: 'assets/profile.png'
+                        size_hint: None, None
+                        size: 50, 50
+                    Label:
+                        text: "Nazmul Hossain"
+                        font_size: 16
+                        color: 1, 1, 1, 1
+
+            BoxLayout:
+                orientation: 'horizontal'
+                padding: 20
+                spacing: 20
+                size_hint_y: None
+                height: 100
+                Button:
+                    text: "Data Upload"
+                    size_hint_y: None
+                    height: 50
+                    background_color: 0.2, 0.2, 0.2, 1
+                    color: 1, 1, 1, 1
+                    on_press: app.root.current = 'data_upload'
+                Button:
+                    text: "Data Processing"
+                    size_hint_y: None
+                    height: 50
+                    background_color: 1, 0.8, 0, 1
+                    color: 1, 1, 1, 1
+                Button:
+                    text: "Model Training"
+                    size_hint_y: None
+                    height: 50
+                    background_color: 0.2, 0.2, 0.2, 1
+                    color: 1, 1, 1, 1
+
+            BoxLayout:
+                orientation: 'vertical'
+                padding: 20
+                Label:
+                    text: "Data Statistics:"
+                    font_size: 20
+                    color: 1, 1, 1, 1
+                    bold: True
+
+                BoxLayout:
+                    size_hint_y: None
+                    height: 200
+                    padding: 20
+                    Image:
+                        source: 'assets/data_statistics.png'
+                        allow_stretch: True
+                        keep_ratio: False
+
+                Label:
+                    text: "Data Quality:"
+                    font_size: 20
+                    color: 1, 1, 1, 1
+                    bold: True
+
+                BoxLayout:
+                    size_hint_y: None
+                    height: 200
+                    padding: 20
+                    Image:
+                        source: 'assets/data_quality.png'
+                        allow_stretch: True
+                        keep_ratio: False
 
             BoxLayout:
                 size_hint_y: None
