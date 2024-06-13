@@ -1,3 +1,5 @@
+#:kivy 1.11.0
+
 <Sidebar@BoxLayout>:
     orientation: 'vertical'
     size_hint_x: None
@@ -27,7 +29,7 @@
         Button:
             size_hint_y: None
             height: 50
-            on_press: app.root.current = 'settings'  # Make sure to add the settings screen if not already present
+            on_press: app.root.current = 'settings'
             Image:
                 source: 'assets/sideNav/settings.png'
                 size_hint: None, None
@@ -37,13 +39,13 @@
     BoxLayout:
         size_hint_y: None
         height: self.minimum_height
-        Label:  # Just to push the Logout button to the bottom
+        Label:
             size_hint_y: None
             height: 50
     Button:
         size_hint_y: None
         height: 50
-        on_press: app.root.current = 'logout'  # Ensure you handle logout logic appropriately
+        on_press: app.root.current = 'logout'
         Image:
             source: 'assets/sideNav/logout.png'
             size_hint: None, None
@@ -52,30 +54,28 @@
             center_y: self.parent.center_y
 
 <CustomButton@Button>:
-    background_normal: ''  # Remove the default background
-    background_color: 0, 0, 0, 0  # Fully transparent background color to prevent the default background
+    background_normal: ''
+    background_color: 0, 0, 0, 0
     canvas.before:
-        # Shadow
         Color:
-            rgba: 0.18, 0.19, 0.25, 1  # Shadow color
+            rgba: 0.18, 0.19, 0.25, 1
         RoundedRectangle:
-            pos: (self.pos[0] + 8, self.pos[1] - 8)  # Offset shadow
+            pos: (self.pos[0] + 8, self.pos[1] - 8)
             size: self.size
             radius: [15,]
         Color:
-            rgba: 0.18, 0.19, 0.25, 0.30  # Border color
+            rgba: 0.18, 0.19, 0.25, 0.30
         Line:
             width: 2
             rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 15)
-        # Gradient background
         Color:
-            rgba: 0.23, 0.24, 0.30, 1  # Darker color at the bottom
+            rgba: 0.23, 0.24, 0.30, 1
         RoundedRectangle:
             pos: self.pos
             size: self.size
             radius: [15,]
         Color:
-            rgba: 0.23, 0.24, 0.30, 0.5  # Lighter color at the top
+            rgba: 0.23, 0.24, 0.30, 0.5
         RoundedRectangle:
             pos: self.pos
             size: (self.size[0], self.size[1] / 2)
@@ -95,7 +95,6 @@
                 Rectangle:
                     pos: self.pos
                     size: self.size
-            # Header
             BoxLayout:
                 size_hint_y: None
                 height: 80
@@ -124,7 +123,6 @@
                         font_size: 16
                         color: 1, 1, 1, 1
 
-            # Navigation Buttons
             BoxLayout:
                 orientation: 'horizontal'
                 padding: 20
@@ -149,7 +147,6 @@
                     height: 50
                     color: 1, 1, 1, 1
 
-            # System Configurations
             BoxLayout:
                 orientation: 'vertical'
                 padding: 0
@@ -161,14 +158,14 @@
 
                 GridLayout:
                     cols: 1
-                    spacing: 5  # Reduced spacing
+                    spacing: 5
                     BoxLayout:
                         orientation: 'horizontal'
-                        spacing: 5  # Reduced spacing
+                        spacing: 5
                         size_hint_y: None
                         height: 30
                         Image:
-                            source: 'assets/dashboard/warning_icon.png'  # Path to your warning icon image
+                            source: 'assets/dashboard/warning_icon.png'
                             size_hint: None, None
                             size: 30, 30
                         Label:
@@ -178,11 +175,11 @@
                             valign: 'middle'
                     BoxLayout:
                         orientation: 'horizontal'
-                        spacing: 5  # Reduced spacing
+                        spacing: 5
                         size_hint_y: None
                         height: 30
                         Image:
-                            source: 'assets/dashboard/warning_icon.png'  # Path to your warning icon image
+                            source: 'assets/dashboard/warning_icon.png'
                             size_hint: None, None
                             size: 30, 30
                         Label:
@@ -192,11 +189,11 @@
                             valign: 'middle'
                     BoxLayout:
                         orientation: 'horizontal'
-                        spacing: 5  # Reduced spacing
+                        spacing: 5
                         size_hint_y: None
                         height: 30
                         Image:
-                            source: 'assets/dashboard/warning_icon.png'  # Path to your warning icon image
+                            source: 'assets/dashboard/warning_icon.png'
                             size_hint: None, None
                             size: 30, 30
                         Label:
@@ -206,11 +203,11 @@
                             valign: 'middle'
                     BoxLayout:
                         orientation: 'horizontal'
-                        spacing: 5  # Reduced spacing
+                        spacing: 5
                         size_hint_y: None
                         height: 30
                         Image:
-                            source: 'assets/dashboard/warning_icon.png'  # Path to your warning icon image
+                            source: 'assets/dashboard/warning_icon.png'
                             size_hint: None, None
                             size: 30, 30
                         Label:
@@ -228,7 +225,9 @@
                     color: 1, 1, 1, 1
 
 <DataUploadScreen>:
+    id: data_upload_screen
     BoxLayout:
+        id: default_layout
         orientation: 'horizontal'
         Sidebar:
         BoxLayout:
@@ -357,6 +356,7 @@
                     orientation: 'vertical'
                     Image:
                         source: 'assets/profile.png'
+                        size_hint: None, None
                         size: 50, 50
                     Label:
                         text: "Md Rokon Uzzaman"
